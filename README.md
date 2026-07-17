@@ -201,13 +201,14 @@ than raw tables.
 
 | Page | Preview |
 |---|---|
-| Home | ![Home](<img width="1900" height="1015" alt="image" src="https://github.com/user-attachments/assets/7fe306f7-4473-4d66-a6f2-a070949487a4" />
+| Home | (<img width="1875" height="825" alt="image" src="https://github.com/user-attachments/assets/1d2e6d5e-dcf3-4b3a-af12-d62448b7c722" />
+)/>
 ) |
-| Overview & KPIs | ![Overview & KPIs](<img width="1877" height="837" alt="image" src="https://github.com/user-attachments/assets/76b5283d-3a9f-4349-b5f4-e57d4f850ddb" />
+| Overview & KPIs | (<img width="1877" height="837" alt="image" src="https://github.com/user-attachments/assets/76b5283d-3a9f-4349-b5f4-e57d4f850ddb" />
 ) |
-| Trends & CO2 | ![Trends & CO2](<img width="1410" height="767" alt="image" src="https://github.com/user-attachments/assets/69a35557-d37a-42f0-be93-e6a95216341b" />
+| Trends & CO2 | (<img width="1410" height="767" alt="image" src="https://github.com/user-attachments/assets/69a35557-d37a-42f0-be93-e6a95216341b" />
 ) |
-| Prediction & Model Performance | ![Prediction & Model Performance](<img width="1272" height="893" alt="image" src="https://github.com/user-attachments/assets/d502e02c-fa9d-4b5a-a8f2-a1401d523e39" />
+| Prediction & Model Performance | (<img width="1272" height="893" alt="image" src="https://github.com/user-attachments/assets/d502e02c-fa9d-4b5a-a8f2-a1401d523e39" />
 ) |
 
 ---
