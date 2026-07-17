@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Steelworks Energy Control{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="hazard-strip"></div>
+
+<nav class="topnav">
+  <a href="{{ url_for('home') }}" class="brand">
+    <div class="brand-mark"><span>SE</span></div>
+    <div class="brand-text">
+      <div class="title">Steelworks Energy Control</div>
+      <div class="subtitle">Load Monitoring &amp; Forecast Unit</div>
+    </div>
+  </a>
+  <div class="navlinks">
+    <a href="{{ url_for('home') }}" class="{{ 'active' if active == 'home' else '' }}">Home</a>
+    <a href="{{ url_for('dashboard') }}" class="{{ 'active' if active == 'dashboard' else '' }}"><span class="dot"></span>Overview</a>
+    <a href="{{ url_for('trends') }}" class="{{ 'active' if active == 'trends' else '' }}">Trends</a>
+    <a href="{{ url_for('predict') }}" class="{{ 'active' if active == 'predict' else '' }}">Predict</a>
+  </div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<div class="footer">Steelworks Energy Control &mdash; PCA-Reduced Random Forest Pipeline &mdash; Internal Monitoring Tool</div>
+
+</body>
+</html>

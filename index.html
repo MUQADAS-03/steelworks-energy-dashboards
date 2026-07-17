@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Steelworks Energy Control &mdash; Home{% endblock %}
+{% block content %}
+
+<div class="hero">
+  <div class="eyebrow">Steel Industry &middot; Energy Consumption Intelligence</div>
+  <h1>Plant load, tracked and<br><span class="accent">predicted</span> in one control room.</h1>
+  <p class="lede">
+    This dashboard turns two years of 15-minute smart-meter readings from the plant floor into
+    three things a CEO actually needs: what the load is doing right now, what is driving CO&#8322;
+    and cost, and a working model that can forecast the next reading before it happens.
+  </p>
+  <div class="hero-cta">
+    <a href="{{ url_for('dashboard') }}" class="btn">Open Overview &amp; KPIs</a>
+    <a href="{{ url_for('trends') }}" class="btn-outline">View Trends &amp; CO&#8322;</a>
+    <a href="{{ url_for('predict') }}" class="btn-outline">Run a Prediction</a>
+  </div>
+</div>
+
+<div class="hero-strip">
+  <div class="item">
+    <div class="n">35,040</div>
+    <div class="l">15-min readings analyzed</div>
+  </div>
+  <div class="item">
+    <div class="n">20 &rarr; 10</div>
+    <div class="l">Features after PCA (95% variance)</div>
+  </div>
+  <div class="item">
+    <div class="n">R&sup2; 0.991</div>
+    <div class="l">Deployed model accuracy</div>
+  </div>
+  <div class="item">
+    <div class="n">3</div>
+    <div class="l">Load types monitored</div>
+  </div>
+</div>
+
+{% endblock %}

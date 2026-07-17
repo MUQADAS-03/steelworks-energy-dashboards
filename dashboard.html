@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}Overview &amp; KPIs &mdash; Steelworks Energy Control{% endblock %}
+{% block content %}
+
+<div class="page">
+
+  <div class="page-header">
+    <div>
+      <div class="eyebrow">Page 01 &middot; Plant Overview</div>
+      <h1>Overview &amp; KPIs</h1>
+    </div>
+    <div class="meta">
+      <div><span class="live">&#9679;</span> Dataset: {{ kpis.date_range if kpis else "not generated" }}</div>
+      <div>Sampling interval: 15 minutes</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi flag-amber">
+      <div class="label">Records Analyzed</div>
+      <div class="value">{{ kpis.total_records_fmt if kpis else "&mdash;" }}</div>
+      <div class="sub">15-min interval readings</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Avg Usage</div>
+      <div class="value">{{ kpis.avg_usage_kwh if kpis else "&mdash;" }}<span class="unit">kWh</span></div>
+      <div class="sub">Mean per 15-min interval</div>
+    </div>
+    <div class="kpi flag-alert">
+      <div class="label">Peak Usage</div>
+      <div class="value">{{ kpis.peak_usage_kwh if kpis else "&mdash;" }}<span class="unit">kWh</span></div>
+      <div class="sub">Single-interval maximum</div>
+    </div>
+    <div class="kpi flag-ok">
+      <div class="label">Total CO&#8322; Output</div>
+      <div class="value">{{ kpis.total_co2_tons if kpis else "&mdash;" }}<span class="unit">tCO&#8322;</span></div>
+      <div class="sub">Across full monitoring window</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Avg Power Factor</div>
+      <div class="value">{{ kpis.avg_power_factor if kpis else "&mdash;" }}</div>
+      <div class="sub">Lagging current, plant-wide</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Weekend Share</div>
+      <div class="value">{{ kpis.weekend_pct if kpis else "&mdash;" }}<span class="unit">%</span></div>
+      <div class="sub">Of total readings</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="panel">
+      <div class="panel-label">Load Curve <span class="tag">Energy by Hour</span></div>
+      {% if plots.energy_by_hour %}
+        <img class="chart-img" src="{{ url_for('static', filename='plots/energy_by_hour.png') }}" alt="Average energy usage by hour of day">
+      {% else %}
+        <div class="chart-missing">energy_by_hour.png not found.<br>Run flask_training/generate_dashboard_plots.py to populate this chart.</div>
+      {% endif %}
+    </div>
+    <div class="panel">
+      <div class="panel-label">Feature Relationships <span class="tag">Correlation Heatmap</span></div>
+      {% if plots.correlation_heatmap %}
+        <img class="chart-img" src="{{ url_for('static', filename='plots/correlation_heatmap.png') }}" alt="Correlation heatmap of numeric features">
+      {% else %}
+        <div class="chart-missing">correlation_heatmap.png not found.<br>Run flask_training/generate_dashboard_plots.py to populate this chart.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-label">Reading This Page <span class="tag">Notes for Decision-Makers</span></div>
+    <ul class="insight-list">
+      <li><span class="marker">01</span><span><b>Load curve</b> shows when the plant draws the most power during the day &mdash; this is the window where shifting non-critical load would cut peak-demand charges the most.</span></li>
+      <li><span class="marker">02</span><span><b>Correlation heatmap</b> flags which electrical readings move together. Highly correlated inputs are candidates for removal without losing predictive signal &mdash; this is exactly what the PCA step on the Trends/Prediction side exploits.</span></li>
+      <li><span class="marker">03</span><span>KPIs above are computed directly from the full engineered dataset each time <code>generate_dashboard_plots.py</code> is run, so this page always reflects the latest data drop.</span></li>
+    </ul>
+  </div>
+
+</div>
+
+{% endblock %}
