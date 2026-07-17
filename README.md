@@ -2,8 +2,10 @@
 
 **Week 3 Internship Task** — Steel Industry Energy Consumption
 
-A two-part project: (1) apply PCA to reduce the Week 2 feature set while
-preserving Random Forest accuracy, and (2) deploy the resulting pipeline
+A two-part project: 
+(1) apply PCA to reduce the Week 2 feature set while
+preserving Random Forest accuracy
+(2) deploy the resulting pipeline
 behind a 3-page Flask dashboard built for plant-level decision-making.
 
 ---
@@ -201,7 +203,8 @@ than raw tables.
 
 | Page | Preview |
 |---|---|
-| Home | (<img width="1875" height="825" alt="image" src="https://github.com/user-attachments/assets/1d2e6d5e-dcf3-4b3a-af12-d62448b7c722" />
+| Home | (<img width="1882" height="911" alt="image" src="https://github.com/user-attachments/assets/158ba0e0-eb6c-468a-999a-6c66d53710be" />
+" />
 )/>
 ) |
 | Overview & KPIs | (<img width="1372" height="762" alt="image" src="https://github.com/user-attachments/assets/ff01c502-6ad5-4fff-9d2e-f17df50803d8" />
