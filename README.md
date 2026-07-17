@@ -204,7 +204,8 @@ than raw tables.
 | Home | (<img width="1875" height="825" alt="image" src="https://github.com/user-attachments/assets/1d2e6d5e-dcf3-4b3a-af12-d62448b7c722" />
 )/>
 ) |
-| Overview & KPIs | (<img width="1877" height="837" alt="image" src="https://github.com/user-attachments/assets/76b5283d-3a9f-4349-b5f4-e57d4f850ddb" />
+| Overview & KPIs | (<img width="1372" height="762" alt="image" src="https://github.com/user-attachments/assets/ff01c502-6ad5-4fff-9d2e-f17df50803d8" />
+) />
 ) |
 | Trends & CO2 | (<img width="1410" height="767" alt="image" src="https://github.com/user-attachments/assets/69a35557-d37a-42f0-be93-e6a95216341b" />
 ) |
