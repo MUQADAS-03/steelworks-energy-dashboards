@@ -4,7 +4,7 @@
 
 A two-part project: 
 (1) apply PCA to reduce the Week 2 feature set while
-preserving Random Forest accuracy
+preserving Random Forest accuracy, and
 (2) deploy the resulting pipeline
 behind a 3-page Flask dashboard built for plant-level decision-making.
 
