@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Trends &amp; CO2 &mdash; Steelworks Energy Control{% endblock %}
+{% block content %}
+
+<div class="page">
+
+  <div class="page-header">
+    <div>
+      <div class="eyebrow">Page 02 &middot; Consumption Behaviour</div>
+      <h1>Trends, CO&#8322; &amp; Load Types</h1>
+    </div>
+    <div class="meta">
+      <div>Load types: Light &middot; Medium &middot; Maximum</div>
+      <div>Comparison basis: Weekday vs Weekend</div>
+    </div>
+  </div>
+
+  <div class="kpi-grid" style="grid-template-columns: repeat(4, 1fr);">
+    <div class="kpi flag-amber">
+      <div class="label">Highest-Draw Load Type</div>
+      <div class="value" style="font-size:24px;">{{ trends.top_load_type if trends else "&mdash;" }}</div>
+      <div class="sub">{{ trends.top_load_type_avg if trends else "" }} kWh average</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Weekday Avg Usage</div>
+      <div class="value">{{ trends.weekday_avg if trends else "&mdash;" }}<span class="unit">kWh</span></div>
+      <div class="sub">Mon&ndash;Fri, per interval</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Weekend Avg Usage</div>
+      <div class="value">{{ trends.weekend_avg if trends else "&mdash;" }}<span class="unit">kWh</span></div>
+      <div class="sub">Sat&ndash;Sun, per interval</div>
+    </div>
+    <div class="kpi flag-ok">
+      <div class="label">Weekend Reduction</div>
+      <div class="value">{{ trends.weekend_diff_pct if trends else "&mdash;" }}<span class="unit">%</span></div>
+      <div class="sub">Vs weekday average</div>
+    </div>
+  </div>
+
+  <div class="grid-2-even">
+    <div class="panel">
+      <div class="panel-label">Consumption Split <span class="tag">Energy by Load Type</span></div>
+      {% if plots.energy_by_load_type %}
+        <img class="chart-img" src="{{ url_for('static', filename='plots/energy_by_load_type.png') }}" alt="Average energy usage by load type">
+      {% else %}
+        <div class="chart-missing">energy_by_load_type.png not found.<br>Run flask_training/generate_dashboard_plots.py to populate this chart.</div>
+      {% endif %}
+    </div>
+    <div class="panel">
+      <div class="panel-label">Emissions Split <span class="tag">CO&#8322; by Load Type</span></div>
+      {% if plots.co2_by_load_type %}
+        <img class="chart-img" src="{{ url_for('static', filename='plots/co2_by_load_type.png') }}" alt="Average CO2 emissions by load type">
+      {% else %}
+        <div class="chart-missing">co2_by_load_type.png not found.<br>Run flask_training/generate_dashboard_plots.py to populate this chart.</div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="panel">
+      <div class="panel-label">Schedule Effect <span class="tag">Weekday vs Weekend</span></div>
+      {% if plots.weekday_weekend %}
+        <img class="chart-img" src="{{ url_for('static', filename='plots/weekday_weekend.png') }}" alt="Weekday vs weekend average usage">
+      {% else %}
+        <div class="chart-missing">weekday_weekend.png not found.<br>Run flask_training/generate_dashboard_plots.py to populate this chart.</div>
+      {% endif %}
+    </div>
+    <div class="panel">
+      <div class="panel-label">Insights <span class="tag">For The CEO</span></div>
+      <ul class="insight-list">
+        <li><span class="marker">01</span><span><b>{{ trends.top_load_type if trends else "The heaviest load type" }}</b> operation consumes the most energy per interval and is the single largest lever for any demand-reduction initiative.</span></li>
+        <li><span class="marker">02</span><span>Weekend operation runs <b>{{ trends.weekend_diff_pct if trends else "X" }}% lower</b> than weekday averages, confirming the plant scales down as expected outside the working week &mdash; any deviation from this gap week-to-week is worth a manual check.</span></li>
+        <li><span class="marker">03</span><span>CO&#8322; output tracks load type almost linearly, so the fastest emissions win is shifting production mix toward lower load-type operation where the order book allows it.</span></li>
+        <li><span class="marker">04</span><span>Peak hour of the day (see Overview page) combined with the heaviest load type is the highest-cost combination to watch for demand-charge exposure.</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}
