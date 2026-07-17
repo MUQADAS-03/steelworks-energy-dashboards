@@ -258,4 +258,4 @@ steel_dashboard/
 
 ## Author
 
-Muqadas — University Internship Task, Week 3
+Muqadas Yasin
